@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>3D Model Viewer</title>
-    <style>
-      body {
+    <head>
+        <link rel="stylesheet" href="./style.css" />
+        <script type="text/javascript" src="./Winwheel.js"></script>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>3D Model Viewer</title>
+        <style>
+            /* body {
         margin: 0;
         background: url("./image.png") no-repeat center center fixed;
         background-size: contain;
@@ -13,102 +16,323 @@
       }
       canvas {
         display: block;
-      }
-    </style>
-  </head>
-  <body>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/libs/fflate.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/FBXLoader.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
-    <script>
-      // Scene, Camera, Renderer
-      const scene = new THREE.Scene();
-      const camera = new THREE.PerspectiveCamera(
-        75,
-        window.innerWidth / window.innerHeight,
-        0.1,
-        1000
-      );
-      const renderer = new THREE.WebGLRenderer({ alpha: true }); // Make the canvas background transparent
-      renderer.setSize(window.innerWidth, window.innerHeight);
-      document.body.appendChild(renderer.domElement);
+      } */
+        </style>
+    </head>
+    <body>
+        <img src="./image.png" alt="bg" class="bgPic" />
+        <div class="spinWheel">
+            <canvas id="canvas" width="400" height="400">
+                <p align="center">
+                    Sorry, your browser doesn't support canvas. Please try
+                    another.
+                </p>
+            </canvas>
+        </div>
+        <button id="spin_button" onClick="startSpin();">بِچَرخ</button>
+        <script>
+            // Create new wheel object specifying the parameters at creation time.
+            let theWheel = new Winwheel({
+                outerRadius: 170, // Set outer radius so wheel fits inside the background.
+                innerRadius: 50, // Make wheel hollow so segments don't go all way to center.
+                textFontSize: 20, // Set default font size for the segments.
+                // 'textOrientation' : 'vertical', // Make text vertial so goes down from the outside of wheel.
+                textAlignment: "outer", // Align text to outside of wheel.
+                numSegments: 20, // Specify number of segments.
+                // Define segments including colour and text.
+                segments: [
+                    // font size and test colour overridden on backrupt segments.
+                    {
+                        fillStyle: "#ee1c24",
+                        text: "10 امتیاز",
+                        textFontFamily: "farsi",
+                    },
+                    {
+                        fillStyle: "#3cb878",
+                        text: "5 امتیاز",
+                        textFontFamily: "farsi",
+                    },
+                    {
+                        fillStyle: "#f6989d",
+                        text: "2 امتیاز",
+                        textFontFamily: "farsi",
+                    },
+                    {
+                        fillStyle: "#00aef0",
+                        text: "20 امتیاز",
+                        textFontFamily: "farsi",
+                    },
+                    {
+                        fillStyle: "#f26522",
+                        text: "1 امتیاز",
+                        textFontFamily: "farsi",
+                    },
+                    {
+                        fillStyle: "#000000",
+                        text: "پوچ",
+                        textFontSize: 26,
+                        textFillStyle: "#ffffff",
+                        textFontFamily: "farsi",
+                    },
+                    {
+                        fillStyle: "#e70697",
+                        text: "30 امتیاز",
+                        textFontFamily: "farsi",
+                    },
+                    {
+                        fillStyle: "#fff200",
+                        text: "8 امتیاز",
+                        textFontFamily: "farsi",
+                    },
+                    {
+                        fillStyle: "#f6989d",
+                        text: "25 امتیاز",
+                        textFontFamily: "farsi",
+                    },
+                    {
+                        fillStyle: "#ee1c24",
+                        text: "5 امتیاز",
+                        textFontFamily: "farsi",
+                    },
+                    {
+                        fillStyle: "#3cb878",
+                        text: "15 امتیاز",
+                        textFontFamily: "farsi",
+                    },
+                    {
+                        fillStyle: "#f26522",
+                        text: "1 امتیاز",
+                        textFontFamily: "farsi",
+                    },
+                    {
+                        fillStyle: "#a186be",
+                        text: "10 امتیاز",
+                        textFontFamily: "farsi",
+                    },
+                    {
+                        fillStyle: "#000000",
+                        text: "پوچ",
+                        textFontSize: 26,
+                        textFillStyle: "#ffffff",
+                        textFontFamily: "farsi",
+                    },
+                    {
+                        fillStyle: "#00aef0",
+                        text: "12 امتیاز",
+                        textFontFamily: "farsi",
+                    },
+                    {
+                        fillStyle: "#ee1c24",
+                        text: "4 امتیاز",
+                        textFontFamily: "farsi",
+                    },
+                    {
+                        fillStyle: "#f6989d",
+                        text: "22 امتیاز",
+                        textFontFamily: "farsi",
+                    },
+                    {
+                        fillStyle: "#f26522",
+                        text: "6 امتیاز",
+                        textFontFamily: "farsi",
+                    },
+                    {
+                        fillStyle: "#3cb878",
+                        text: "2 امتیاز",
+                        textFontFamily: "farsi",
+                    },
+                    {
+                        fillStyle: "#000000",
+                        text: "پوچ",
+                        textFontSize: 26,
+                        textFillStyle: "#ffffff",
+                        textFontFamily: "farsi",
+                    },
+                    {
+                        fillStyle: "#a186be",
+                        text: "600",
+                        textFontFamily: "farsi",
+                    },
+                    {
+                        fillStyle: "#fff200",
+                        text: "700",
+                        textFontFamily: "farsi",
+                    },
+                    {
+                        fillStyle: "#00aef0",
+                        text: "800",
+                        textFontFamily: "farsi",
+                    },
+                    {
+                        fillStyle: "#ffffff",
+                        text: "پوچ",
+                        textFontSize: 26,
+                        textFontFamily: "farsi",
+                    },
+                ],
+                // Specify the animation to use.
+                animation: {
+                    type: "spinToStop",
+                    duration: 10, // Duration in seconds.
+                    spins: 4, // Default number of complete spins.
+                    callbackFinished: alertPrize,
+                    callbackSound: playSound, // Function to call when the tick sound is to be triggered.
+                    soundTrigger: "pin", // Specify pins are to trigger the sound, the other option is 'segment'.
+                },
+                // Turn pins on.
+                pins: {
+                    number: 20,
+                    fillStyle: "silver",
+                    outerRadius: 4,
+                },
+            });
 
-      // Set camera position
-      camera.position.set(0, 5, 10); // Set the camera position to be above and behind the model
-      camera.lookAt(0, 0, 0); // Look at the center of the scene where your model is located
+            // Loads the tick audio sound in to an audio object.
+            let audio = new Audio("tick.mp3");
 
-      camera.fov = 120; // Default is usually 50-75. Increase to zoom out.
-      camera.updateProjectionMatrix();
+            // This function is called when the sound is to be played.
+            function playSound() {
+                // Stop and rewind the sound if it already happens to be playing.
+                audio.pause();
+                audio.currentTime = 0;
 
-      // Lighting
-      const ambientLight = new THREE.AmbientLight(0x404040);
-      scene.add(ambientLight);
-      const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
-      directionalLight.position.set(0, 0, 1).normalize();
-      scene.add(directionalLight);
-        
-      // Load FBX Model
-      const fbxLoader = new THREE.FBXLoader();
-      fbxLoader.load(
-        "./newobj.fbx",
-        function (object) {
-          // Set the scale of the object
-          object.scale.set(0.5, 0.5, 0.5); // Adjust the scale as needed
-          // Apply textures to each mesh in the model
-          object.traverse(function (child) {
-            if (child.isMesh) {
-              // Load base color texture
-              const baseColorTextureLoader = new THREE.TextureLoader();
-              const baseColorTexture = baseColorTextureLoader.load(
-                "./DelesterCan01_Material_Albedo.png"
-              );
-              // Apply base color texture to the material
-              child.material.map = baseColorTexture
-
-
-              // Load normal texture
-              const normalTextureLoader = new THREE.TextureLoader();
-              const normalTexture = normalTextureLoader.load(
-                "./DelesterCan01_Material_Normal.png"
-              );
-              // Apply normal texture to the material
-              child.material.normalMap = normalTexture;
+                // Play the sound.
+                audio.play();
             }
-          });
 
-          scene.add(object);
-        },
-        undefined,
-        function (error) {
-          console.error(error);
-        }
-      );
+            // Vars used by the code in this page to do power controls.
+            let wheelPower = 1;
+            let wheelSpinning = false;
+            // -------------------------------------------------------
+            // Click handler for spin button.
+            // -------------------------------------------------------
+            function startSpin() {
+                if ((wheelSpinning = true)) {
+                    resetWheel();
+                }
+                theWheel.animation.spins = 4;
+                theWheel.startAnimation();
 
-      // OrbitControls
-      const controls = new THREE.OrbitControls(camera, renderer.domElement);
-      controls.enableDamping = true; // an animation loop is required when either damping or auto-rotation are enabled
-      controls.dampingFactor = 0.25;
-      controls.screenSpacePanning = true; // Enable panning in X, Y dimensions
-      controls.maxPolarAngle = Math.PI; // Remove restriction on how far you can orbit vertically
-      controls.minDistance = 0; // Remove restriction on how close the camera can be to the target
-      controls.maxDistance = Infinity; // Remove restriction on how far the camera can be from the target
+                wheelSpinning = true;
+            }
 
-      // Animation Loop
-      function animate() {
-        requestAnimationFrame(animate);
-        controls.update(); // Update controls
-        renderer.render(scene, camera);
-      }
+            // -------------------------------------------------------
+            // Function for reset button.
+            // -------------------------------------------------------
+            function resetWheel() {
+                theWheel.stopAnimation(false); // Stop the animation, false as param so does not call callback function.
+                theWheel.rotationAngle = 0; // Re-set the wheel angle to 0 degrees.
+                theWheel.draw(); // Call draw to render changes to the wheel.
+                wheelSpinning = false; // Reset to false to power buttons and spin can be clicked again.
+            }
 
-      animate();
+            // -------------------------------------------------------
+            // Called when the spin animation has finished by the callback feature of the wheel because I specified callback in the parameters.
+            // -------------------------------------------------------
+            function alertPrize(indicatedSegment) {
+                if (indicatedSegment.text == "پوچ") {
+                    alert("Sorry but you loose a turn.");
+                } else if (indicatedSegment.text == "پو") {
+                    alert("Oh no, you have gone BANKRUPT!");
+                } else {
+                    alert("You have won " + indicatedSegment.text);
+                }
+            }
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/libs/fflate.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/FBXLoader.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+        <script>
+            // Scene, Camera, Renderer
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(
+                75,
+                window.innerWidth / window.innerHeight,
+                0.1,
+                1000
+            );
+            const renderer = new THREE.WebGLRenderer({ alpha: true }); // Make the canvas background transparent
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            document.body.appendChild(renderer.domElement);
 
-      // Resize handler
-      window.addEventListener("resize", function () {
-        camera.aspect = window.innerWidth / window.innerHeight;
-        camera.updateProjectionMatrix();
-        renderer.setSize(window.innerWidth, window.innerHeight);
-      });
-    </script>
-  </body>
+            // Set camera position
+            camera.position.set(0, 5, 10); // Set the camera position to be above and behind the model
+            camera.lookAt(0, 0, 0); // Look at the center of the scene where your model is located
+
+            camera.fov = 120; // Default is usually 50-75. Increase to zoom out.
+            camera.updateProjectionMatrix();
+
+            // Lighting
+            const ambientLight = new THREE.AmbientLight(0x404040);
+            scene.add(ambientLight);
+            const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+            directionalLight.position.set(0, 0, 1).normalize();
+            scene.add(directionalLight);
+
+            // Load FBX Model
+            //   const fbxLoader = new THREE.FBXLoader();
+            //   fbxLoader.load(
+            //     "./newobj.fbx",
+            //     function (object) {
+            //       // Set the scale of the object
+            //       object.scale.set(0.5, 0.5, 0.5); // Adjust the scale as needed
+            //       // Apply textures to each mesh in the model
+            //       object.traverse(function (child) {
+            //         if (child.isMesh) {
+            //           // Load base color texture
+            //           const baseColorTextureLoader = new THREE.TextureLoader();
+            //           const baseColorTexture = baseColorTextureLoader.load(
+            //             "./DelesterCan01_Material_Albedo.png"
+            //           );
+            //           // Apply base color texture to the material
+            //           child.material.map = baseColorTexture
+
+            //           // Load normal texture
+            //           const normalTextureLoader = new THREE.TextureLoader();
+            //           const normalTexture = normalTextureLoader.load(
+            //             "./DelesterCan01_Material_Normal.png"
+            //           );
+            //           // Apply normal texture to the material
+            //           child.material.normalMap = normalTexture;
+            //         }
+            //       });
+
+            //       scene.add(object);
+            //     },
+            //     undefined,
+            //     function (error) {
+            //       console.error(error);
+            //     }
+            //   );
+
+            // OrbitControls
+            const controls = new THREE.OrbitControls(
+                camera,
+                renderer.domElement
+            );
+            controls.enableDamping = true; // an animation loop is required when either damping or auto-rotation are enabled
+            controls.dampingFactor = 0.25;
+            controls.screenSpacePanning = true; // Enable panning in X, Y dimensions
+            controls.maxPolarAngle = Math.PI; // Remove restriction on how far you can orbit vertically
+            controls.minDistance = 0; // Remove restriction on how close the camera can be to the target
+            controls.maxDistance = Infinity; // Remove restriction on how far the camera can be from the target
+
+            // Animation Loop
+            function animate() {
+                requestAnimationFrame(animate);
+                controls.update(); // Update controls
+                renderer.render(scene, camera);
+            }
+
+            animate();
+
+            // Resize handler
+            window.addEventListener("resize", function () {
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+            });
+        </script>
+    </body>
 </html>

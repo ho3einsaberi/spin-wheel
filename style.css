@@ -1,0 +1,51 @@
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+@font-face {
+    font-family: "farsi";
+    font-weight: 700;
+    font-style: normal;
+    src: url("./400-AzarMehr-FD-Regular.woff2") format("woff2");
+}
+body,
+a,
+button {
+    font-family: "farsi";
+}
+.spinWheel {
+    position: fixed;
+    z-index: 10;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#spin_button {
+    border-radius: 100%;
+    width: 100px;
+    height: 100px;
+    z-index: 30;
+    position: fixed;
+    font-size: 30px;
+}
+.bgPic {
+    z-index: 20;
+    width: 100vw;
+    height: 100vh;
+    object-fit: contain;
+    position: fixed;
+}
+body {
+    direction: rtl;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #09071e;
+}
+
+/* modal */
