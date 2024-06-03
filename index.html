@@ -6,18 +6,7 @@
         <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>3D Model Viewer</title>
-        <style>
-            /* body {
-        margin: 0;
-        background: url("./image.png") no-repeat center center fixed;
-        background-size: contain;
-        background-color: #09071e;
-      }
-      canvas {
-        display: block;
-      } */
-        </style>
+        <title>چرخونه شانس</title>
     </head>
     <body>
         <img src="./image.png" alt="bg" class="bgPic" />
@@ -29,145 +18,141 @@
                 </p>
             </canvas>
         </div>
-        <button id="spin_button" onClick="startSpin();">بِچَرخ</button>
+        <div class="spinButton">
+            <button id="spin_button" onClick="startSpin();">بِچَرخ</button>
+        </div>
+        <div class="modal">
+            <div class="content">
+                <h1 class="prizeTitle"></h1>
+                <h1 class="prizePoint"></h1>
+                <h1 class="totalPoint"></h1>
+            </div>
+            <div class="modalButtons">
+                <button class="tryAgainButton" onClick="tryAgain();"></button>
+            </div>
+        </div>
         <script>
             // Create new wheel object specifying the parameters at creation time.
             let theWheel = new Winwheel({
                 outerRadius: 170, // Set outer radius so wheel fits inside the background.
                 innerRadius: 50, // Make wheel hollow so segments don't go all way to center.
-                textFontSize: 20, // Set default font size for the segments.
+                textFontSize: 24, // Set default font size for the segments.
+                textFontFamily: "farsi",
                 // 'textOrientation' : 'vertical', // Make text vertial so goes down from the outside of wheel.
                 textAlignment: "outer", // Align text to outside of wheel.
-                numSegments: 20, // Specify number of segments.
+                numSegments: 15, // Specify number of segments.
                 // Define segments including colour and text.
+                drawMode: "image",
+                imageOverlay: true,
+                drawText: true,
+                // drawImage: true,
+                strokeStyle: "#fff",
+                textStyle: "#fff",
+                textFillStyle: "#fff",
                 segments: [
                     // font size and test colour overridden on backrupt segments.
                     {
-                        fillStyle: "#ee1c24",
+                        // fillStyle: "#ee1c24",
                         text: "10 امتیاز",
-                        textFontFamily: "farsi",
                     },
                     {
-                        fillStyle: "#3cb878",
+                        // fillStyle: "#3cb878",
                         text: "5 امتیاز",
-                        textFontFamily: "farsi",
                     },
                     {
-                        fillStyle: "#f6989d",
+                        // fillStyle: "#f6989d",
                         text: "2 امتیاز",
-                        textFontFamily: "farsi",
                     },
                     {
-                        fillStyle: "#00aef0",
+                        // fillStyle: "#00aef0",
                         text: "20 امتیاز",
-                        textFontFamily: "farsi",
                     },
                     {
-                        fillStyle: "#f26522",
+                        // fillStyle: "#f26522",
                         text: "1 امتیاز",
-                        textFontFamily: "farsi",
                     },
                     {
-                        fillStyle: "#000000",
+                        // fillStyle: "#000000",
                         text: "پوچ",
                         textFontSize: 26,
-                        textFillStyle: "#ffffff",
-                        textFontFamily: "farsi",
+                        // textFillStyle: "#ffffff",
                     },
                     {
-                        fillStyle: "#e70697",
+                        // fillStyle: "#e70697",
                         text: "30 امتیاز",
-                        textFontFamily: "farsi",
                     },
                     {
-                        fillStyle: "#fff200",
+                        // fillStyle: "#fff200",
                         text: "8 امتیاز",
-                        textFontFamily: "farsi",
                     },
                     {
-                        fillStyle: "#f6989d",
+                        // fillStyle: "#f6989d",
                         text: "25 امتیاز",
-                        textFontFamily: "farsi",
                     },
                     {
-                        fillStyle: "#ee1c24",
+                        // fillStyle: "#ee1c24",
                         text: "5 امتیاز",
-                        textFontFamily: "farsi",
                     },
                     {
-                        fillStyle: "#3cb878",
+                        // fillStyle: "#3cb878",
                         text: "15 امتیاز",
-                        textFontFamily: "farsi",
                     },
                     {
-                        fillStyle: "#f26522",
+                        // fillStyle: "#f26522",
                         text: "1 امتیاز",
-                        textFontFamily: "farsi",
                     },
                     {
-                        fillStyle: "#a186be",
+                        // fillStyle: "#a186be",
                         text: "10 امتیاز",
-                        textFontFamily: "farsi",
                     },
                     {
-                        fillStyle: "#000000",
+                        // fillStyle: "#000000",
                         text: "پوچ",
                         textFontSize: 26,
-                        textFillStyle: "#ffffff",
-                        textFontFamily: "farsi",
+                        // textFillStyle: "#ffffff",
                     },
                     {
-                        fillStyle: "#00aef0",
+                        // fillStyle: "#00aef0",
                         text: "12 امتیاز",
-                        textFontFamily: "farsi",
                     },
                     {
-                        fillStyle: "#ee1c24",
+                        // fillStyle: "#ee1c24",
                         text: "4 امتیاز",
-                        textFontFamily: "farsi",
                     },
                     {
-                        fillStyle: "#f6989d",
+                        // fillStyle: "#f6989d",
                         text: "22 امتیاز",
-                        textFontFamily: "farsi",
                     },
                     {
-                        fillStyle: "#f26522",
+                        // fillStyle: "#f26522",
                         text: "6 امتیاز",
-                        textFontFamily: "farsi",
                     },
                     {
-                        fillStyle: "#3cb878",
+                        // fillStyle: "#3cb878",
                         text: "2 امتیاز",
-                        textFontFamily: "farsi",
                     },
                     {
-                        fillStyle: "#000000",
+                        // fillStyle: "#000000",
                         text: "پوچ",
                         textFontSize: 26,
-                        textFillStyle: "#ffffff",
-                        textFontFamily: "farsi",
+                        // textFillStyle: "#ffffff",
                     },
                     {
-                        fillStyle: "#a186be",
+                        // fillStyle: "#a186be",
                         text: "600",
-                        textFontFamily: "farsi",
                     },
                     {
-                        fillStyle: "#fff200",
+                        // fillStyle: "#fff200",
                         text: "700",
-                        textFontFamily: "farsi",
                     },
                     {
-                        fillStyle: "#00aef0",
+                        // fillStyle: "#00aef0",
                         text: "800",
-                        textFontFamily: "farsi",
                     },
                     {
-                        fillStyle: "#ffffff",
+                        // fillStyle: "#ffffff",
                         text: "پوچ",
                         textFontSize: 26,
-                        textFontFamily: "farsi",
                     },
                 ],
                 // Specify the animation to use.
@@ -181,14 +166,31 @@
                 },
                 // Turn pins on.
                 pins: {
-                    number: 20,
-                    fillStyle: "silver",
+                    number: 15,
+                    // fillStyle: "silver",
                     outerRadius: 4,
                 },
             });
 
+            let total = 0;
+            let round = 1;
+
+            // Create new image object in memory.
+            let loadedImg = new Image();
+
+            // Create callback to execute once the image has finished loading.
+            loadedImg.onload = function () {
+                theWheel.wheelImage = loadedImg; // Make wheelImage equal the loaded image object.
+                theWheel.draw(); // Also call draw function to render the wheel.
+            };
+
+            // Set the image source, once complete this will trigger the onLoad callback (above).
+            loadedImg.src = "test.svg";
+
             // Loads the tick audio sound in to an audio object.
             let audio = new Audio("tick.mp3");
+            let winAudio = new Audio("win.mp3");
+            let lostAudio = new Audio("lost.mp3");
 
             // This function is called when the sound is to be played.
             function playSound() {
@@ -203,10 +205,16 @@
             // Vars used by the code in this page to do power controls.
             let wheelPower = 1;
             let wheelSpinning = false;
+
             // -------------------------------------------------------
             // Click handler for spin button.
             // -------------------------------------------------------
             function startSpin() {
+                if (round === 4) {
+                    total = 0;
+                    round = 1;
+                }
+                document.querySelector("#spin_button").disabled = true;
                 if ((wheelSpinning = true)) {
                     resetWheel();
                 }
@@ -214,6 +222,18 @@
                 theWheel.startAnimation();
 
                 wheelSpinning = true;
+                round === 1
+                    ? (document.querySelector(".tryAgainButton").textContent =
+                          "یه بار دیگه")
+                    : round === 2
+                    ? (document.querySelector(".tryAgainButton").textContent =
+                          "دورِ آخر")
+                    : (document.querySelector(".tryAgainButton").textContent =
+                          "تمام");
+            }
+            function tryAgain() {
+                document.querySelector(".modal").classList.remove("opened");
+                document.querySelector("#spin_button").disabled = false;
             }
 
             // -------------------------------------------------------
@@ -229,13 +249,66 @@
             // -------------------------------------------------------
             // Called when the spin animation has finished by the callback feature of the wheel because I specified callback in the parameters.
             // -------------------------------------------------------
+
             function alertPrize(indicatedSegment) {
+                document.querySelector(".modal").classList.add("opened");
+
                 if (indicatedSegment.text == "پوچ") {
-                    alert("Sorry but you loose a turn.");
-                } else if (indicatedSegment.text == "پو") {
-                    alert("Oh no, you have gone BANKRUPT!");
+                    lostAudio.pause();
+                    lostAudio.currentTime = 0;
+                    lostAudio.play();
+                    document.querySelector(".prizeTitle").textContent =
+                        "باختی!";
+                    document.querySelector(
+                        ".prizePoint"
+                    ).textContent = `در دایره قسمت ما نقطه تسلیمیم ...`;
+                    document.querySelector(".modal").style.backgroundColor =
+                        "red";
                 } else {
-                    alert("You have won " + indicatedSegment.text);
+                    winAudio.pause();
+                    winAudio.currentTime = 0;
+                    winAudio.play();
+                    document.querySelector(".prizeTitle").textContent =
+                        "تبریک به تو!";
+                    document.querySelector(
+                        ".prizePoint"
+                    ).textContent = `${indicatedSegment.text} بردی`;
+                    document.querySelector(".modal").style.backgroundColor =
+                        "dodgerblue";
+                }
+                total =
+                    total +
+                    (indicatedSegment.text === "10 امتیاز"
+                        ? 10
+                        : indicatedSegment.text === "30 امتیاز"
+                        ? 30
+                        : indicatedSegment.text === "12 امتیاز"
+                        ? 12
+                        : indicatedSegment.text === "1 امتیاز"
+                        ? 1
+                        : indicatedSegment.text === "15 امتیاز"
+                        ? 15
+                        : indicatedSegment.text === "5 امتیاز"
+                        ? 5
+                        : indicatedSegment.text === "25 امتیاز"
+                        ? 25
+                        : indicatedSegment.text === "8 امتیاز"
+                        ? 8
+                        : indicatedSegment.text === "20 امتیاز"
+                        ? 20
+                        : indicatedSegment.text === "2 امتیاز"
+                        ? 2
+                        : 0);
+
+                round++;
+                if (round === 4) {
+                    document.querySelector(
+                        ".totalPoint"
+                    ).textContent = `امتیاز نهایی: ${total}`;
+                } else {
+                    document.querySelector(
+                        ".totalPoint"
+                    ).textContent = `امتیاز کل: ${total}`;
                 }
             }
         </script>
