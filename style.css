@@ -38,17 +38,21 @@ button {
     transition: all ease-in-out 0.2s;
 }
 #spin_button:hover {
-    /* transform: scale(1.05); */
     -webkit-box-shadow: -1px 10px 20px -4px rgba(0, 0, 0, 0.71);
     -moz-box-shadow: -1px 10px 20px -4px rgba(0, 0, 0, 0.71);
     box-shadow: -1px 10px 20px -4px rgba(0, 0, 0, 0.71);
 }
 .bgPic {
     z-index: 20;
-    width: 100vw;
-    height: 100vh;
+    width: 47rem;
+    height: 47rem;
     object-fit: contain;
     position: fixed;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    margin-top: 0.3rem;
 }
 .spinButton {
     width: 100vw;
@@ -60,30 +64,16 @@ button {
 }
 body {
     direction: rtl;
-    /* display: flex;
+    display: flex;
     justify-content: center;
-    align-items: center; */
+    align-items: center;
+
     background-color: #09071e;
 }
 
 /* modal */
-/* .modal-container {
-    z-index: 99;
-    position: fixed;
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.modal {
-    padding: 10px 20px;
-    background: red;
-    z-index: 100;
-} */
 .modal {
     z-index: 100;
-    /* background: dodgerblue; */
     height: 1px;
     overflow: hidden;
     position: fixed;
