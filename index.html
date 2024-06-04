@@ -2,14 +2,18 @@
 <html lang="en">
     <head>
         <link rel="stylesheet" href="./style.css" />
-        <script type="text/javascript" src="./Winwheel.js"></script>
+        <script type="text/javascript" src="./js/Winwheel.js"></script>
         <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>چرخونه شانس</title>
     </head>
     <body>
-        <img src="./image.png" alt="bg" class="bgPic" />
+        <!-- spinWheel bg -->
+        <div class="bgPic-container">
+            <img src="./Assets/images/image.png" alt="bg" class="bgPic" />
+        </div>
+        <!-- spinWheel -->
         <div class="spinWheel">
             <canvas id="canvas" width="400" height="400">
                 <p align="center">
@@ -18,9 +22,12 @@
                 </p>
             </canvas>
         </div>
+        <!-- spin Btn -->
         <div class="spinButton">
             <button id="spin_button" onClick="startSpin();">بِچَرخ</button>
         </div>
+
+        <!-- modal -->
         <div class="modal">
             <div class="content">
                 <h1 class="prizeTitle"></h1>
@@ -31,6 +38,22 @@
                 <button class="tryAgainButton" onClick="tryAgain();"></button>
             </div>
         </div>
-        <script src="./spinWheel.js"></script>
+        <!-- images -->
+        <div class="images">
+            <div>
+                <img class="img2" src="./Assets/images/5.png" alt="behnoush" />
+                <img class="img1" src="./Assets/images/2.png" alt="behnoush" />
+            </div>
+            <div>
+                <img class="img4" src="./Assets/images/6.png" alt="behnoush" />
+                <img class="img3" src="./Assets/images/10.png" alt="behnoush" />
+            </div>
+        </div>
+        <!-- logo -->
+        <div class="logo-container">
+            <img class="logo" src="./Assets/images/logo.png" alt="logo" />
+        </div>
+        <!-- script -->
+        <script src="./js/spinWheel.js"></script>
     </body>
 </html>
