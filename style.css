@@ -32,7 +32,7 @@ button {
     border-radius: 100%;
     width: 100px;
     height: 100px;
-    z-index: 30;
+    z-index: 50;
     /* position: fixed; */
     font-size: 30px;
     transition: all ease-in-out 0.2s;
@@ -69,7 +69,7 @@ button {
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 30;
+    z-index: 50;
     position: fixed;
 }
 body {
@@ -146,6 +146,7 @@ body {
     flex-direction: column;
     justify-content: space-between;
     position: fixed;
+    z-index: 40;
 }
 .images > div {
     display: flex;
@@ -154,6 +155,7 @@ body {
 }
 .images > div > img {
     width: 25rem;
+    z-index: 40;
 }
 .img1 {
     animation: shakeBottom 25s ease 0s infinite normal forwards;
@@ -275,6 +277,11 @@ body {
 
     100% {
         transform: translate(0);
+    }
+}
+@media screen and (max-width: 680px) {
+    .images >div {
+        display: none;
     }
 }
 /* logo */
