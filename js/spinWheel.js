@@ -8,7 +8,7 @@ let theWheel = new Winwheel({
     textAlignment: "outer", // Align text to outside of wheel.
     numSegments: 15, // Specify number of segments.
     // Define segments including colour and text.
-    drawMode: "image",
+    // drawMode: "image",
     imageOverlay: true,
     drawText: true,
     strokeStyle: "#fff",
@@ -17,105 +17,105 @@ let theWheel = new Winwheel({
     segments: [
         // font size and test colour overridden on backrupt segments.
         {
-            // fillStyle: "#ee1c24",
+            fillStyle: "#ee1c24",
             text: "10 امتیاز",
         },
         {
-            // fillStyle: "#3cb878",
+            fillStyle: "#3cb878",
             text: "5 امتیاز",
         },
         {
-            // fillStyle: "#f6989d",
+            fillStyle: "#f6989d",
             text: "2 امتیاز",
         },
         {
-            // fillStyle: "#00aef0",
+            fillStyle: "#00aef0",
             text: "20 امتیاز",
         },
         {
-            // fillStyle: "#f26522",
+            fillStyle: "#f26522",
             text: "1 امتیاز",
         },
         {
-            // fillStyle: "#000000",
+            fillStyle: "#000000",
             text: "پوچ",
             textFontSize: 26,
-            // textFillStyle: "#ffffff",
+            textFillStyle: "#ffffff",
         },
         {
-            // fillStyle: "#e70697",
+            fillStyle: "#e70697",
             text: "30 امتیاز",
         },
         {
-            // fillStyle: "#fff200",
+            fillStyle: "#fff200",
             text: "8 امتیاز",
         },
         {
-            // fillStyle: "#f6989d",
+            fillStyle: "#f6989d",
             text: "25 امتیاز",
         },
         {
-            // fillStyle: "#ee1c24",
+            fillStyle: "#ee1c24",
             text: "5 امتیاز",
         },
         {
-            // fillStyle: "#3cb878",
+            fillStyle: "#3cb878",
             text: "15 امتیاز",
         },
         {
-            // fillStyle: "#f26522",
+            fillStyle: "#f26522",
             text: "1 امتیاز",
         },
         {
-            // fillStyle: "#a186be",
+            fillStyle: "#a186be",
             text: "10 امتیاز",
         },
         {
-            // fillStyle: "#000000",
+            fillStyle: "#000000",
             text: "پوچ",
             textFontSize: 26,
-            // textFillStyle: "#ffffff",
+            textFillStyle: "#ffffff",
         },
         {
-            // fillStyle: "#00aef0",
+            fillStyle: "#00aef0",
             text: "12 امتیاز",
         },
         {
-            // fillStyle: "#ee1c24",
+            fillStyle: "#ee1c24",
             text: "4 امتیاز",
         },
         {
-            // fillStyle: "#f6989d",
+            fillStyle: "#f6989d",
             text: "22 امتیاز",
         },
         {
-            // fillStyle: "#f26522",
+            fillStyle: "#f26522",
             text: "6 امتیاز",
         },
         {
-            // fillStyle: "#3cb878",
+            fillStyle: "#3cb878",
             text: "2 امتیاز",
         },
         {
-            // fillStyle: "#000000",
+            fillStyle: "#000000",
             text: "پوچ",
             textFontSize: 26,
-            // textFillStyle: "#ffffff",
+            textFillStyle: "#ffffff",
         },
         {
-            // fillStyle: "#a186be",
+            fillStyle: "#a186be",
             text: "600",
         },
         {
-            // fillStyle: "#fff200",
+            fillStyle: "#fff200",
             text: "700",
         },
         {
-            // fillStyle: "#00aef0",
+            fillStyle: "#00aef0",
             text: "800",
         },
         {
-            // fillStyle: "#ffffff",
+            fillStyle: "#ffffff",
             text: "پوچ",
             textFontSize: 26,
         },

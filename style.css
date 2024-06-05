@@ -14,6 +14,12 @@
 body > canvas {
     display: none !important;
 }
+#threeCanvas {
+    display: block !important;
+    z-index: 90 !important;
+    position: fixed;
+    bottom: 0;
+}
 body,
 a,
 button {
@@ -36,6 +42,15 @@ button {
     /* position: fixed; */
     font-size: 30px;
     transition: all ease-in-out 0.2s;
+    animation: heart 2s ease 5s infinite normal forwards;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#spin_button img {
+    width: 100px;
+    height: 100px;
+    z-index: 50;
 }
 #spin_button:hover {
     -webkit-box-shadow: -1px 10px 20px -4px rgba(0, 0, 0, 0.71);
@@ -72,11 +87,39 @@ button {
     z-index: 50;
     position: fixed;
 }
+@keyframes heart {
+    0% {
+        animation-timing-function: ease-out;
+        transform: scale(1);
+        transform-origin: center center;
+    }
+
+    10% {
+        animation-timing-function: ease-in;
+        transform: scale(1.09);
+    }
+
+    17% {
+        animation-timing-function: ease-out;
+        transform: scale(1.02);
+    }
+
+    33% {
+        animation-timing-function: ease-in;
+        transform: scale(1.13);
+    }
+
+    45% {
+        animation-timing-function: ease-out;
+        transform: scale(1);
+    }
+}
 body {
     direction: rtl;
     /* background-color: #09071e; */
-    background: radial-gradient(circle at center, #212f56 0%, #000000 100%);
-    background-attachment: fixed;
+    /* background: radial-gradient(circle at center, #212f56 0%, #000000 100%);
+    background-attachment: fixed; */
+    background: url("./testbg3.jpg") center center fixed;
 }
 
 /* modal */
@@ -154,16 +197,19 @@ body {
     align-items: center;
 }
 .images > div > img {
-    width: 25rem;
+    width: 20rem;
     z-index: 40;
 }
 .img1 {
+    margin-left: 5rem;
     animation: shakeBottom 25s ease 0s infinite normal forwards;
 }
 .img2 {
+    margin-right: 3rem;
     animation: shakeHoriz 20s ease 0s infinite normal forwards;
 }
 .img3 {
+    margin-left: 1rem;
     animation: shakeVertical 20s ease 0s infinite normal forwards;
 }
 .img4 {
@@ -280,7 +326,7 @@ body {
     }
 }
 @media screen and (max-width: 680px) {
-    .images >div {
+    .images > div {
         display: none;
     }
 }

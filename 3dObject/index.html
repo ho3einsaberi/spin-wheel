@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Three.js FBX Example</title>
+    <style>
+        body { margin: 0; }
+        canvas { display: block; }
+    </style>
+</head>
+<body>
+    
+       <!-- Include Three.js -->
+       <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+       <!-- Include OrbitControls -->
+       <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+       <!-- Include fflate.min.js -->
+       <script src="https://unpkg.com/fflate@0.8.2"></script>
+       <script src="https://cdn.jsdelivr.net/npm/fflate@0.8.2/umd/index.js"></script>
+       <!-- Include FBXLoader -->
+       <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+   <script>
+                // Basic setup
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({alpha : true});
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+
+        // OrbitControls for better interaction
+        const controls = new THREE.OrbitControls(camera, renderer.domElement);
+        controls.enableDamping = true;
+        controls.dampingFactor = 0.25;
+        controls.screenSpacePanning = false;
+        controls.maxPolarAngle = Math.PI / 2;
+
+        
+        // Hemisphere Light
+        const hemiLight = new THREE.HemisphereLight(0xffffff, 0x000000, 1); // Sky color, ground color, intensity
+        scene.add(hemiLight);
+
+      // Load GLB model
+      const loader = new THREE.GLTFLoader();
+        loader.load('DelesterCan.glb', function(gltf) {
+            // Apply textures to meshes
+            const textureLoader = new THREE.TextureLoader();
+            const texture1 = textureLoader.load('DelesterCan01_Material_Albedo.png');
+            const texture2 = textureLoader.load('DelesterCan01_Metal_subst_AO.png');
+
+            gltf.scene.traverse(function(child) {
+                if (child.isMesh) {
+                    console.log('Mesh name:', child.name); // Debugging statement to log mesh names
+
+                    if (child.name === 'Can_geo_Coke_logo_subst_0') {
+                        // Create a material for mesh1
+                        const material1 = new THREE.MeshBasicMaterial({ map: texture1 });
+
+                        // Apply the material to mesh1
+                        child.material = material1;
+                    } else if (child.name === 'Can_geo_Metal_subst_0') {
+                        // Create a material for mesh2
+                        const material2 = new THREE.MeshBasicMaterial({ map: texture2 });
+
+                        // Apply the material to mesh2
+                        child.material = material2;
+                    }
+                    
+
+                    // You can apply other material properties as needed
+                    child.material.side = THREE.DoubleSide; // Set material to double-sided
+                    child.material.needsUpdate = true; // Update material
+                }
+            });
+
+            // Ensure the entire object is added to the scene
+            scene.add(gltf.scene);
+        }, undefined, function(error) {
+            console.error('An error occurred loading the GLB model:', error);
+        });
+
+
+        // Camera position
+        camera.position.set(0, 2, 5);
+        controls.update();
+
+       // Animation loop
+       function animate() {
+            requestAnimationFrame(animate);
+            controls.update();
+            // Rotate the object around itself slowly
+            scene.traverse(function(child) {
+                if (child.isMesh) {
+                    child.rotation.y += 0.01; // Adjust the rotation speed as needed
+                }
+            });
+            renderer.render(scene, camera);
+        }
+        animate();
+
+        // Handle window resize
+        window.addEventListener('resize', function() {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        }, false);
+    </script>
+</body>
+</html>
