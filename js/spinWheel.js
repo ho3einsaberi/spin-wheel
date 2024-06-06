@@ -1,6 +1,6 @@
 // Create new wheel object specifying the parameters at creation time.
 let theWheel = new Winwheel({
-    outerRadius: 170, // Set outer radius so wheel fits inside the background.
+    outerRadius: 270, // Set outer radius so wheel fits inside the background.
     innerRadius: 50, // Make wheel hollow so segments don't go all way to center.
     textFontSize: 24, // Set default font size for the segments.
     textFontFamily: "farsi",
@@ -180,6 +180,7 @@ function startSpin() {
         round = 1;
     }
     document.querySelector("#spin_button").disabled = true;
+    document.querySelector("#spin_button2").disabled = true;
     if ((wheelSpinning = true)) {
         resetWheel();
     }
@@ -197,6 +198,7 @@ function startSpin() {
 function tryAgain() {
     document.querySelector(".modal").classList.remove("opened");
     document.querySelector("#spin_button").disabled = false;
+    document.querySelector("#spin_button2").disabled = false;
 }
 
 // -------------------------------------------------------
