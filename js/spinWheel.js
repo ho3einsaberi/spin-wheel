@@ -1,5 +1,5 @@
 // Create new wheel object specifying the parameters at creation time.
-let theWheel = new Winwheel({
+let theWheel = new Winwheel({  
   outerRadius: 170, // Set outer radius so wheel fits inside the background.
   innerRadius: 50, // Make wheel hollow so segments don't go all way to center.
   textFontSize: 24, // Set default font size for the segments.
@@ -138,16 +138,17 @@ let wheelSpinning = false;
 // Click handler for spin button.
 // -------------------------------------------------------
 function startSpin() {
-  if (round === 4) {
-    total = 0;
-    round = 1;
-  }
-  document.querySelector("#spin_button").disabled = true;
-  if ((wheelSpinning = true)) {
-    resetWheel();
-  }
-  theWheel.animation.spins = 4;
-  theWheel.startAnimation();
+    if (round === 4) {
+        total = 0;
+        round = 1;
+    }
+    document.querySelector("#spin_button").disabled = true;
+    document.querySelector("#spin_button2").disabled = true;
+    if ((wheelSpinning = true)) {
+        resetWheel();
+    }
+    theWheel.animation.spins = 4;
+    theWheel.startAnimation();
 
   wheelSpinning = true;
   round === 1
@@ -156,9 +157,7 @@ function startSpin() {
     ? (document.querySelector(".tryAgainButton").textContent = "دورِ آخر")
     : (document.querySelector(".tryAgainButton").textContent = "تمام");
 }
-function tryAgain() {
-  document.querySelector(".modal").classList.remove("opened");
-  document.querySelector("#spin_button").disabled = false;
+function tryAgain() {    
   //   if (round === 4) {
   //     const fname = document.getElementById("fname").value;
   //     const number = document.getElementById("number").value;
@@ -181,6 +180,9 @@ function tryAgain() {
   //         console.error("Error:", error);
   //       });
   //   }
+    document.querySelector(".modal").classList.remove("opened");
+    document.querySelector("#spin_button").disabled = false;
+    document.querySelector("#spin_button2").disabled = false;
 }
 
 // -------------------------------------------------------
