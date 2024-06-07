@@ -1,6 +1,6 @@
 // Create new wheel object specifying the parameters at creation time.
 let theWheel = new Winwheel({
-  outerRadius: 170, // Set outer radius so wheel fits inside the background.
+  outerRadius: 249, // Set outer radius so wheel fits inside the background.
   innerRadius: 50, // Make wheel hollow so segments don't go all way to center.
   textFontSize: 24, // Set default font size for the segments.
   textFontFamily: "farsi",
@@ -86,7 +86,7 @@ let theWheel = new Winwheel({
   // Specify the animation to use.
   animation: {
     type: "spinToStop",
-    duration: 1, // Duration in seconds.
+    duration: 10, // Duration in seconds.
     spins: 4, // Default number of complete spins.
     callbackFinished: alertPrize,
     callbackSound: playSound, // Function to call when the tick sound is to be triggered.

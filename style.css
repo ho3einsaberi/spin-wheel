@@ -14,12 +14,12 @@
 body > canvas {
     display: none !important;
 }
-#threeCanvas {
+/* #threeCanvas {
     display: block !important;
     z-index: 90 !important;
     position: fixed;
     bottom: 0;
-}
+} */
 
 body,
 a,
@@ -27,7 +27,7 @@ button {
     font-family: "farsi";
 }
 
-.button-74{
+.button-74 {
     background-color: #fbeee0;
     border: 2px solid #422800;
     box-shadow: #422800 4px 4px 0 0;
@@ -45,21 +45,21 @@ button {
     touch-action: manipulation;
     margin-top: 5px;
     margin-left: 0; /* Aligns the button to the left */
-  z-index: 1000;
-  }
-  .button-74 a {
+    z-index: 1000;
+}
+.button-74 a {
     text-decoration: none;
-  }
-  
-  .button-74:hover {
+}
+
+.button-74:hover {
     background-color: #fff;
-  }
-  
-  .button-74:active {
+}
+
+.button-74:active {
     box-shadow: #422800 2px 2px 0 0;
     transform: translate(2px, 2px);
-  }
-  
+}
+
 .spinWheel {
     position: fixed;
     z-index: 10;
@@ -102,7 +102,7 @@ button {
     justify-content: center;
     text-align: center;
     align-items: center;
-    margin-top: 0.3rem;
+    margin-top: 0.6rem;
 }
 .bgPic-container {
     width: 100vw;
@@ -151,9 +151,6 @@ button {
 }
 body {
     direction: rtl;
-    /* background-color: #09071e; */
-    /* background: radial-gradient(circle at center, #212f56 0%, #000000 100%);
-    background-attachment: fixed; */
     background: url("./testbg3.jpg") no-repeat center center fixed;
     background-size: cover;
 }
@@ -206,10 +203,9 @@ body {
     height: 50vh;
     position: fixed;
     top: 0;
+}
 
-  }
-  
-  .form {
+.form {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -218,26 +214,26 @@ body {
     height: 50vh;
     position: fixed;
     top: 0;
-  }
-  
-  form {
+}
+
+form {
     font-family: "farsi";
     margin: auto;
-  }
-  input {
+}
+input {
     font-family: "farsi";
     border-radius: 10px;
     box-sizing: border-box;
     border: 2px solid #ccc;
     padding: 5px;
-  }
-  label {
+}
+label {
     /* display: block;  */
     /* margin-bottom: 8px;  */
     font-weight: bold;
     align-self: flex-start;
-  }
-  
+}
+
 /* try agian */
 .tryAgainButton {
     margin-bottom: 50px;
@@ -276,7 +272,7 @@ body {
     align-items: center;
 }
 .images > div > img {
-    width: 20rem;
+    width: 30rem;
     z-index: 40;
 }
 .img1 {
