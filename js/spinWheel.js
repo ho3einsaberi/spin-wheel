@@ -1,5 +1,5 @@
 // Create new wheel object specifying the parameters at creation time.
-let theWheel = new Winwheel({  
+let theWheel = new Winwheel({
   outerRadius: 170, // Set outer radius so wheel fits inside the background.
   innerRadius: 50, // Make wheel hollow so segments don't go all way to center.
   textFontSize: 24, // Set default font size for the segments.
@@ -138,17 +138,17 @@ let wheelSpinning = false;
 // Click handler for spin button.
 // -------------------------------------------------------
 function startSpin() {
-    if (round === 4) {
-        total = 0;
-        round = 1;
-    }
-    document.querySelector("#spin_button").disabled = true;
-    document.querySelector("#spin_button2").disabled = true;
-    if ((wheelSpinning = true)) {
-        resetWheel();
-    }
-    theWheel.animation.spins = 4;
-    theWheel.startAnimation();
+  if (round === 4) {
+    total = 0;
+    round = 1;
+  }
+  document.querySelector("#spin_button").disabled = true;
+  document.querySelector("#spin_button2").disabled = true;
+  if ((wheelSpinning = true)) {
+    resetWheel();
+  }
+  theWheel.animation.spins = 4;
+  theWheel.startAnimation();
 
   wheelSpinning = true;
   round === 1
@@ -157,33 +157,53 @@ function startSpin() {
     ? (document.querySelector(".tryAgainButton").textContent = "دورِ آخر")
     : (document.querySelector(".tryAgainButton").textContent = "تمام");
 }
-function tryAgain() {    
-  //   if (round === 4) {
-  //     const fname = document.getElementById("fname").value;
-  //     const number = document.getElementById("number").value;
+function tryAgain() {
+  if (round === 4) {
+    const fname = document.getElementById("fname").value;
+    const number = document.getElementById("number").value;
 
-  //     fetch("https://expo.iran.liara.run/login-spin", {
-  //       method: "POST",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //       body: JSON.stringify({
-  //         phone: number,
-  //         fullname: fname,
-  //       }),
-  //     })
-  //       .then((response) => response.json())
-  //       .then((data) => {
-  //         console.log("Success:", data);
-  //       })
-  //       .catch((error) => {
-  //         console.error("Error:", error);
-  //       });
-  //   }
-    document.querySelector(".modal").classList.remove("opened");
-    document.querySelector("#spin_button").disabled = false;
-    document.querySelector("#spin_button2").disabled = false;
+    fetch("https://expo.iran.liara.run/login-spin", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        phone: number,
+        fullname: fname,
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Success:", data);
+        return fetch("https://expo.iran.liara.run/score-spin", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            phone: number,
+            score: total,
+          }),
+        });
+      })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Stats sent successfully:", data);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+
+    // Remove the form from the modal
+    document.querySelector(".form").innerHTML = '';
+  }
+  
+  // Always close the modal and enable spin buttons
+  document.querySelector(".modal").classList.remove("opened");
+  document.querySelector("#spin_button").disabled = false;
+  document.querySelector("#spin_button2").disabled = false;
 }
+
 
 // -------------------------------------------------------
 // Function for reset button.
@@ -256,12 +276,12 @@ function alertPrize(indicatedSegment) {
   } else {
     document.querySelector(".totalPoint").textContent = `امتیاز کل: ${total}`;
   }
-  //   if (round === 4) {
-  //     document.querySelector(".form").innerHTML = `<form id="infoForm">
-  //     <label>نام:</label><br>
-  //     <input type="text" id="fname" name="fname"><br>
-  //     <label for="number">شماره تماس:</label><br>
-  //     <input type="text" id="number" name="number"><br><br><br><br>
-  //   </form>`;
-  //   }
+  if (round === 4) {
+    document.querySelector(".form").innerHTML = `<form id="infoForm">
+      <label>نام:</label><br>
+      <input type="text" id="fname" name="fname"><br>
+      <label for="number">شماره تماس:</label><br>
+      <input type="text" id="number" name="number"><br><br><br><br>
+    </form>`;
+  }
 }

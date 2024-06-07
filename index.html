@@ -1,67 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <link rel="stylesheet" href="./style.css" />
-        <script type="text/javascript" src="./js/Winwheel.js"></script>
-        <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>چرخونه شانس</title>
-    </head>
-    <body>
-        <!-- Logo -->
-        <div class="newLogo">
-            <img src="./Assets/images/newLogo.png" alt="logo" />
-        </div>
-        <!-- spinWheel bg -->
-        <div class="bgPic-container">
-            <img src="./Assets/images/image.png" alt="bg" class="bgPic" />
-        </div>
-        <!-- spinWheel -->
-        <div class="spinWheel">
-            <canvas id="canvas" width="1300" height="1300">
-                <p align="center">
-                    Sorry, your browser doesn't support canvas. Please try
-                    another.
-                </p>
-            </canvas>
-        </div>
-        <!-- spin Btn -->
-        <div class="spinButton">
-            <button id="spin_button" onClick="startSpin();">
-                <img src="./Assets/images/logo.png" alt="logo" />
-            </button>
-        </div>
-        <div class="spinButton2">
-            <button id="spin_button2" onClick="startSpin();">
-                شانستو امتحان کن!
-            </button>
-        </div>
+  <head>
+    <link rel="stylesheet" href="./style.css" />
+    <script type="text/javascript" src="./js/Winwheel.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>چرخونه شانس</title>
+  </head>
+  <body>
+    <!-- Logo -->
+    <div class="newLogo">
+      <img src="./Assets/images/newLogo.png" alt="logo" />
+    </div>
+    <!-- spinWheel bg -->
+    <div class="bgPic-container">
+      <img src="./Assets/images/image.png" alt="bg" class="bgPic" />
+    </div>
+    <!-- spinWheel -->
+    <div class="spinWheel">
+      <canvas id="canvas" width="1300" height="1300">
+        <p align="center">
+          Sorry, your browser doesn't support canvas. Please try another.
+        </p>
+      </canvas>
+    </div>
+    <!-- spin Btn -->
+    <div class="spinButton">
+      <button id="spin_button" onClick="startSpin();">
+        <img src="./Assets/images/logo.png" alt="logo" />
+      </button>
+    </div>
+    <div class="spinButton2">
+      <button id="spin_button2" onClick="startSpin();">
+        شانستو امتحان کن!
+      </button>
+      <button id="spin_button3" class="button-74">
+        <a href="./table.html">رکوردها</a>
+      </button>
+    </div>
+   
 
-        <!-- modal -->
-        <div class="modal">
-            <div class="content">
-                <h1 class="prizeTitle"></h1>
-                <h1 class="prizePoint"></h1>
-                <h1 class="totalPoint"></h1>
-            </div>
-            <div class="modalButtons">
-                <button class="tryAgainButton" onClick="tryAgain();"></button>
-            </div>
-        </div>
-        <!-- images -->
-        <div class="images">
-            <div>
-                <img class="img2" src="./Assets/images/5.png" alt="behnoush" />
-                <img class="img1" src="./Assets/images/2.png" alt="behnoush" />
-            </div>
-            <div>
-                <img class="img4" src="./Assets/images/6.png" alt="behnoush" />
-                <img class="img3" src="./Assets/images/10.png" alt="behnoush" />
-            </div>
-        </div>
+    <!-- modal -->
+    <div class="modal">
+      <div class="content">
+        <h1 class="prizeTitle"></h1>
+        <h1 class="prizePoint"></h1>
+        <h1 class="totalPoint"></h1>
+      </div>
+      <div class="form"></div>
+      <div class="modalButtons">
+        <button class="tryAgainButton" onClick="tryAgain();"></button>
+      </div>
+    </div>
+    <!-- images -->
+    <div class="images">
+      <div>
+        <img class="img2" src="./Assets/images/5.png" alt="behnoush" />
+        <img class="img1" src="./Assets/images/2.png" alt="behnoush" />
+      </div>
+      <div>
+        <img class="img4" src="./Assets/images/6.png" alt="behnoush" />
+        <img class="img3" src="./Assets/images/10.png" alt="behnoush" />
+      </div>
+    </div>
 
-        <!-- script -->
-        <script src="./js/spinWheel.js"></script>
-    </body>
+    <!-- script -->
+    <script src="./js/spinWheel.js"></script>
+  </body>
 </html>

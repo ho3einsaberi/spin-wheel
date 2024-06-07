@@ -20,11 +20,46 @@ body > canvas {
     position: fixed;
     bottom: 0;
 }
+
 body,
 a,
 button {
     font-family: "farsi";
 }
+
+.button-74{
+    background-color: #fbeee0;
+    border: 2px solid #422800;
+    box-shadow: #422800 4px 4px 0 0;
+    border-radius: 7px;
+    color: #422800;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: 600;
+    font-size: 18px;
+    padding: 0 18px;
+    line-height: 50px;
+    text-align: center;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    margin-top: 5px;
+    margin-left: 0; /* Aligns the button to the left */
+  z-index: 1000;
+  }
+  .button-74 a {
+    text-decoration: none;
+  }
+  
+  .button-74:hover {
+    background-color: #fff;
+  }
+  
+  .button-74:active {
+    box-shadow: #422800 2px 2px 0 0;
+    transform: translate(2px, 2px);
+  }
+  
 .spinWheel {
     position: fixed;
     z-index: 10;
@@ -174,19 +209,34 @@ body {
 
   }
   
-  form {
-    font-family: "farsi";
-    /* max-width: 400px; */
-    margin: auto;
+  .form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100vw;
+    height: 50vh;
+    position: fixed;
+    top: 0;
   }
   
+  form {
+    font-family: "farsi";
+    margin: auto;
+  }
+  input {
+    font-family: "farsi";
+    border-radius: 10px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    padding: 5px;
+  }
   label {
     /* display: block;  */
     /* margin-bottom: 8px;  */
-    font-weight: bold; 
+    font-weight: bold;
+    align-self: flex-start;
   }
-  
-  
   
 /* try agian */
 .tryAgainButton {
@@ -400,6 +450,15 @@ body {
     -webkit-box-shadow: -1px 10px 20px -4px rgba(0, 0, 0, 0.71);
     -moz-box-shadow: -1px 10px 20px -4px rgba(0, 0, 0, 0.71);
     box-shadow: -1px 10px 20px -4px rgba(0, 0, 0, 0.71);
+}
+.spinButton2 #spin_button3 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    z-index: 60;
+    margin-top: 4rem;
 }
 /* newLogo */
 .newLogo {
